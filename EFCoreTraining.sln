@@ -5,7 +5,9 @@ VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DbFirst", "DbFirst\DbFirst.csproj", "{CA660C27-B7B2-4D66-9884-C115787AEAF4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeFirst", "CodeFirst\CodeFirst.csproj", "{86B63C7E-3C94-4ACC-A009-4C4D6A25B35D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeFirst", "CodeFirst\CodeFirst.csproj", "{86B63C7E-3C94-4ACC-A009-4C4D6A25B35D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersistingData_CodeFirst", "PersistingData_CodeFirst\PersistingData_CodeFirst.csproj", "{A21F4880-EC54-4CCD-ADE6-36E62CAD0404}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{86B63C7E-3C94-4ACC-A009-4C4D6A25B35D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{86B63C7E-3C94-4ACC-A009-4C4D6A25B35D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{86B63C7E-3C94-4ACC-A009-4C4D6A25B35D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A21F4880-EC54-4CCD-ADE6-36E62CAD0404}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A21F4880-EC54-4CCD-ADE6-36E62CAD0404}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A21F4880-EC54-4CCD-ADE6-36E62CAD0404}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A21F4880-EC54-4CCD-ADE6-36E62CAD0404}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
