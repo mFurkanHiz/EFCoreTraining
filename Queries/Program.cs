@@ -62,7 +62,6 @@ ECommerceDbContext context = new();
 
 #region Çoğul veri getiren sorgular
 
-
 #region Where
 // Oluşturulan sorguya şart eklemeyi sağlar
 #endregion
@@ -82,14 +81,14 @@ ECommerceDbContext context = new();
 
 #region Query Syntax
 
-var urunler = from x in context.Products 
-              where x.Id > 250 && x.Name.EndsWith("2") 
-              select x;
+//var urunler = from x in context.Products 
+//              where x.Id > 250 && x.Name.EndsWith("2") 
+//              select x;
 
-foreach (var item in urunler)
-{
-    Console.WriteLine(item.Name);
-}
+//foreach (var item in urunler)
+//{
+//    Console.WriteLine(item.Name);
+//}
 
 #endregion
 
