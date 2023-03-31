@@ -138,7 +138,27 @@ CodeFirstKitaplikDbContext context = new();
 
 #endregion
 
+#region Veri Silme
 
+//Book book1 = context.Books.FirstOrDefault(u => u.Id == 7);
+
+//context.Books.Remove(book1);
+//context.SaveChanges();
+
+#endregion
+
+#region Toplu Silme
+
+//List<Book> kitaplar = context.Books.ToList(); // bütün verileri çeker
+
+//foreach(var item in kitaplar)
+//{
+//    Console.WriteLine(item.KitapAdi);
+//}
+//context.Books.RemoveRange(kitaplar);
+//context.SaveChanges();
+
+#endregion
 
 public class CodeFirstKitaplikDbContext : DbContext
 {
