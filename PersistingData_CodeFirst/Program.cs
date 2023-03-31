@@ -7,17 +7,17 @@ Console.WriteLine();
 #region Veri Ekleme
 CodeFirstKitaplikDbContext context = new();
 //Book book = new();
-Book book = new()
-{
-    KitapAdi = "Muhittin",
-    Fiyat = 60
-};
+//Book book = new()
+//{
+//    KitapAdi = "Muhittin",
+//    Fiyat = 60
+//};
 
-context.Add(book);
+//context.Add(book);
 
 //context.SaveChanges();
-await context.AddAsync(); // aynı işlem
-await context.SaveChangesAsync(); // aynısı ama daha hızlı
+//await context.AddAsync(); // aynı işlem
+//await context.SaveChangesAsync(); // aynısı ama daha hızlı
 
 
 // SaveChanges: insert update delete sorgularını oluşturup bir transaction eşliğinde vt'na gönderip execute eden fonksiyondur. Eğer ki sorgulardan herangi herhangi biri başarısız olursa tüm işlemler geri alınacaktır. bu işleme rollback denir [mülekatlarda sorulur]
@@ -25,21 +25,116 @@ await context.SaveChangesAsync(); // aynısı ama daha hızlı
 #endregion
 
 #region EFCore verinin ekleneceğini nereden anlıyor
-Book book2 = new()
-{
-    KitapAdi = "Muhittin2",
-    Fiyat = 60
-};
 
-Console.WriteLine(context.Entry(book2).State);
+//Book book2 = new()
+//{
+//    KitapAdi = "Muhittin2",
+//    Fiyat = 60
+//};
 
-await context.AddAsync(book2);
+//Console.WriteLine(context.Entry(book2).State);
 
-Console.WriteLine(context.Entry(book2).State);
+//await context.AddAsync(book2);
 
-await context.SaveChangesAsync();
+//Console.WriteLine(context.Entry(book2).State);
 
-Console.WriteLine(context.Entry(book2).State);
+//await context.SaveChangesAsync();
+
+//Console.WriteLine(context.Entry(book2).State);
+
+#endregion
+
+#region Birden Fazla Veri Eklerken Nelere Dikkat Edeceğiz
+
+//Book book = new()
+//{
+//    KitapAdi = "Muhittin3",
+//    Fiyat = 60
+//};
+
+//Book book1 = new()
+//{
+//    KitapAdi = "Ökkeş Dolmuşçu",
+//    Fiyat = 60
+//};
+//Book book2 = new()
+//{
+//    KitapAdi = "Yunus Günçe",
+//    Fiyat = 60
+//};
+
+//context.Books.Add(book);
+//context.Books.Add(book1);
+//context.Books.Add(book2);
+//await context.SaveChangesAsync();
+
+//context.Books.AddRange(book, book1, book2);
+//await context.SaveChangesAsync();
+
+
+
+
+
+#endregion
+
+#region Veri Nasıl Güncellenmaktedir??
+
+//Book book = context.Books.FirstOrDefault(x => x.Id == 5); // Id si 5 olan veriyi getir
+
+//book.KitapAdi = "Ökkeş Balıkçı";
+//book.Fiyat = 100;
+
+//context.SaveChanges();
+
+
+
+#endregion
+
+#region change tracker
+
+// change tracker
+// contexttten gelen dataların takibinden sorumlu bir mekanizma. Bu takip mekanizması sayesinde context üzerinden gelen verilerle ilgili işlemlerin sonucunda update veya delete sorgularının oluşacağını anlar.
+
+//Book book1 = await context.Books.FirstOrDefaultAsync(u => u.Id == 9); // => lambda operator
+
+//Console.WriteLine(context.Entry(book1).State); // Unchanged
+
+//book1.KitapAdi = "Tuna Tavus";
+
+//Console.WriteLine(context.Entry(book1).State); // Modified
+
+//await context.SaveChangesAsync();
+
+//Console.WriteLine(context.Entry(book1).State); // Unchanged
+
+
+//// takip edilebilir olmayan update
+//Book bookOrnek = new()
+//{
+//    Id = 7,
+//    KitapAdi = "Karpuz",
+//    Fiyat = 450
+//};
+
+////context.Update(); // bu şekilde de kullanılabilir ama diğeri kadar güvenli değil
+//// Change tracker mekanizması tarafnıdan takip edilemeyen nesnelerin güncellenebilmesi açısından update fonksiyonu kullanılmaktadır. Bu takip edilememe meselesini şöyle algılayabiliriz. İlk yaptığımız güncelleme örneğinde veritabanımıza context üzerinden bir sorgu atıp istediğimiz Id ye sahip olan nesneyi programımıza çağırdık. Sonrasında bu gelen ve haliyle takip edilebilen nesne üzerinde değişiklik yapıp savechanges dedik. Şu an ise context üzerinden herhangi bir işlem yapmadan ve haliyle takip edemediğimiz bir nesne üzerinden işlem yapmak istedik. Bu yüzden update metodunu kullanmak zorunda kaldık.
+//context.Books.Update(bookOrnek);
+//context.SaveChanges();
+
+//// diğerinde dinleme mekanizması var
+
+#endregion
+
+#region Toplu Update (foreach ile)
+
+//var kitaplar = await context.Books.ToListAsync(); // takip edilebilir
+
+//foreach(var item in kitaplar)
+//{
+//    item.KitapAdi += " :)";
+//}
+
+//await context.SaveChangesAsync();
 
 #endregion
 
